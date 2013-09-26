@@ -1,1 +1,1 @@
-# Nomicrator - a Nomic game resource and Rails learning exercise
+# Nomicator - a Nomic game resource and Rails learning exercise
