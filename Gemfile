@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+#ruby-gemset=nomicator_setup
 
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass', '2.3.2.0'

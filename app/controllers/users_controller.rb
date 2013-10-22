@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user,  only: [:edit, :update]
+  before_filter :signed_in_user,  only: [:edit, :update, :index]
   before_filter :correct_user,    only: [:edit, :update]
   def new
     @user = User.new
@@ -20,11 +20,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+        @users = User.all
+  end
+
   def edit
   end
 
   def update
-
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -34,8 +37,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  #before filters
+
     def signed_in_user
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
     end
 
 
