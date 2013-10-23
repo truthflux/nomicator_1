@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin)}
   it { should respond_to(:authenticate) }
+  it { should respond_to(:activity_logs) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -115,4 +116,30 @@ describe User do
     its(:remember_token) { should_not be_blank }
   end
 
+  describe "log associations" do
+
+    before { @user.save }
+    let!(:older_log) do
+      FactoryGirl.create(:activity_log, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_log) do
+      FactoryGirl.create(:activity_log, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right logs in the right order" do
+      @user.activity_logs.should == [newer_log, older_log]
+    end
+
+
+    it "should destroy associated logs" do
+      activity_logs = @user.activity_logs.dup
+      @user.destroy
+      activity_logs.should_not be_empty
+      activity_logs.each do |activity_log|
+        ActivityLog.find_by_id(activity_log.id).should be_nil
+      end
+
+    end
+
+  end
 end

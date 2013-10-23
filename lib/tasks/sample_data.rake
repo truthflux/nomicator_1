@@ -8,6 +8,7 @@ namespace :db do
 
     admin.toggle!(:admin)
 
+
     99.times do |n|
       name  = Faker::Name.name
       email = "example-#{n+1}@example.com"
@@ -17,6 +18,12 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
 
+    end
+
+    users = User.all(limit: 6)
+    50.times do
+      content = Faker::Lorem.sentence(8)
+      users.each { |user| user.activity_logs.create!(content: content )}
     end
   end
 end
