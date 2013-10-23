@@ -9,6 +9,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'factory_girl_rails', '4.2.1'
 
+
 ruby '1.9.3'
 
 # Gems used only for assets and not required
