@@ -19,6 +19,13 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def User.feed
+    #TODO update for other users's logs.
+    ActivityLog.where("user_id = ?", id)
+
+
+  end
+
   private
 
     def create_remember_token

@@ -18,6 +18,7 @@ describe User do
   it { should respond_to(:admin)}
   it { should respond_to(:authenticate) }
   it { should respond_to(:activity_logs) }
+  it { should respond_to(:feed) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -139,6 +140,16 @@ describe User do
         ActivityLog.find_by_id(activity_log.id).should be_nil
       end
 
+    end
+
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:activity_log, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_log) }
+      its(:feed) { should include(older_log) }
+      its(:feed) { should_not include(unfollowed_post) }
     end
 
   end
