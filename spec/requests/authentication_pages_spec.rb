@@ -80,6 +80,21 @@ describe "Authentication" do
         end
 
       end
+
+      describe "in the ActivityLogs controller" do
+
+        describe "submitting to the create action" do
+          before { post activity_logs_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the delete action" do
+          before { delete activity_log_path(FactoryGirl.create(:activity_log)) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end
+
+
     end
 
 

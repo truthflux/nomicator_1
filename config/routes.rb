@@ -2,6 +2,7 @@ Nomicator::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :activity_logs, only: [:create, :destroy]
 
 
   match '/signup', to: 'users#new'
