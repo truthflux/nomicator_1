@@ -10,7 +10,7 @@ class CreateProposeables < ActiveRecord::Migration
 
       t.integer :ruleset_id
       t.integer :proposeable_type_id
-      t.integer :predecessor_id
+      t.integer :successor_id
       t.integer :proposer_id
       t.integer :owner_id
 

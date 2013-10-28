@@ -5,6 +5,11 @@ class Proposeable < ActiveRecord::Base
   belongs_to :owner, :class_name => "User",
              :foreign_key => 'owner_id'
 
+  has_many :successors, class_name: "Proposeable",
+           foreign_key: "successor_id"
+
+  belongs_to :predecessors, class_name: "Proposeable"
+
   validates   :title, presence: true, length: { maximum: 100 }
   validates   :content, presence: true, length: { maximum: 500 }
   validates   :index_number, presence: true

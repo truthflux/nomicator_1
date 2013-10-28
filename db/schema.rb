@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20131028034938) do
     t.integer  "version_number"
     t.integer  "ruleset_id"
     t.integer  "proposeable_type_id"
-    t.integer  "predecessor_id"
+    t.integer  "successor_id"
     t.integer  "proposer_id"
     t.integer  "owner_id"
     t.datetime "created_at",          :null => false

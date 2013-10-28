@@ -15,7 +15,7 @@ describe Proposeable do
 
   it { should respond_to(:ruleset_id) }
   it { should respond_to(:proposeable_type_id) }
-  it { should respond_to(:predecessor_id) }
+  it { should respond_to(:successor_id) }
   it { should respond_to(:proposer_id) }
   it { should respond_to(:owner_id) }
 

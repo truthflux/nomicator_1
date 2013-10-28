@@ -28,7 +28,7 @@ FactoryGirl.define do
     #adjust once proposeable_types implemented
     proposeable_type_id { 1 }
 
-    predecessor_id { nil }
+    successor_id { nil }
 
     proposer
     owner
