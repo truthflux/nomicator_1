@@ -19,7 +19,6 @@ FactoryGirl.define do
     title "Lorem Ipsum"
     content "Lorem ipsum"
     sequence(:resolve_time) { |n| n.hours.from_now }
-    sequence(:index_number) { |n| 2*n }
     sequence(:version_number) { |n| 3*n }
 
     #adjust once rulesets implemented

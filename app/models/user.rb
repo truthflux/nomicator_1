@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_many :activity_logs, dependent: :destroy
-  has_many :proposeables
+  has_many :proposeables, class_name: "Proposeable", inverse_of: :proposer, foreign_key: 'proposer_id'
+  has_many :actionables, class_name: "Proposeable", inverse_of: :owner, foreign_key: 'resolver_id'
 
 
   before_save { self.email = email.downcase }
