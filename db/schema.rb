@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028034938) do
+ActiveRecord::Schema.define(:version => 20131028195752) do
 
   create_table "activity_logs", :force => true do |t|
     t.string   "content"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(:version => 20131028034938) do
   end
 
   add_index "activity_logs", ["user_id", "created_at"], :name => "index_activity_logs_on_user_id_and_created_at"
+
+  create_table "proposeable_types", :force => true do |t|
+    t.string   "type_name"
+    t.integer  "interval"
+    t.integer  "weekday"
+    t.integer  "voter_role_id"
+    t.boolean  "instant_resolve"
+    t.decimal  "majority"
+    t.decimal  "quorum"
+    t.boolean  "in_effect"
+    t.boolean  "succeeded"
+    t.boolean  "archived"
+    t.boolean  "actionable"
+    t.integer  "resolution_type_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "proposeables", :force => true do |t|
     t.string   "title"
@@ -38,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20131028034938) do
 
   add_index "proposeables", ["proposer_id", "resolver_id"], :name => "index_proposeables_on_proposer_id_and_resolver_id"
   add_index "proposeables", ["ruleset_id", "proposeable_type_id"], :name => "index_proposeables_on_ruleset_id_and_proposeable_type_id"
+
+  create_table "rulesets", :force => true do |t|
+    t.string   "name"
+    t.integer  "default_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
