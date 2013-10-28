@@ -1,0 +1,2 @@
+class ProposeableController < ApplicationController
+end

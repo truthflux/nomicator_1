@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023041930) do
+ActiveRecord::Schema.define(:version => 20131028034938) do
 
   create_table "activity_logs", :force => true do |t|
     t.string   "content"
@@ -21,6 +21,24 @@ ActiveRecord::Schema.define(:version => 20131023041930) do
   end
 
   add_index "activity_logs", ["user_id", "created_at"], :name => "index_activity_logs_on_user_id_and_created_at"
+
+  create_table "proposeables", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.time     "resolve_time"
+    t.integer  "index_number"
+    t.integer  "version_number"
+    t.integer  "ruleset_id"
+    t.integer  "proposeable_type_id"
+    t.integer  "predecessor_id"
+    t.integer  "proposer_id"
+    t.integer  "owner_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "proposeables", ["proposer_id", "owner_id"], :name => "index_proposeables_on_proposer_id_and_owner_id"
+  add_index "proposeables", ["ruleset_id", "proposeable_type_id"], :name => "index_proposeables_on_ruleset_id_and_proposeable_type_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
