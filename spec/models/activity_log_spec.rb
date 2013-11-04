@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe ActivityLog do
   let (:user) { FactoryGirl.create(:user) }
+
   before do
     @activity_log = user.activity_logs.build(content: "Lorem ipsum")
   end
+
   subject { @activity_log }
 
   it { should respond_to(:content) }

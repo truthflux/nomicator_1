@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :proposeable_type do
-    type_name "MyString"
+    sequence(:type_name)  { |n| "RuleType #{n}" }
     interval 1
     weekday 1
     voter_role_id 1

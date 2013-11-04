@@ -8,6 +8,9 @@ describe Proposeable do
                                             ruleset_id: 1, proposeable_type_id: 1)
   end
 
+  #TODO proposeable factory
+  #TODO add in use of proposeable_type factory
+
   subject { @proposeable }
 
   it { should respond_to(:title) }
