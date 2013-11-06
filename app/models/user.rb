@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    #TODO update for other users's logs.
+    #TODO update for other users's log
     ActivityLog.where("user_id = ?", id)
 
 
