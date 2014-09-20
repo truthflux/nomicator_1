@@ -29,6 +29,7 @@ group :doc do
 end
 
 # Use sqlite3 and rspec for dev
+# Todo: Switch to using pg
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
@@ -40,6 +41,7 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
+# Use pg on Heroku
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -47,4 +49,3 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-

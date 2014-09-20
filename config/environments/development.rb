@@ -19,6 +19,9 @@ Nomicator::Application.configure do
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
+  #Do not force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = false
+
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
